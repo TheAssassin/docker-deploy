@@ -1,7 +1,7 @@
 language: go
 
 script:
-  - CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' docker-deploy.go -o docker-deploy
+  - CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' -o docker-deploy docker-deploy.go
 
 after_success:
   - ls -lh
