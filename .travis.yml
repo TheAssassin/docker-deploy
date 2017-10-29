@@ -1,0 +1,9 @@
+language: go
+
+script:
+  - CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static"' docker-deploy.go -o docker-deploy
+
+after_success:
+  - ls -lh
+  - wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+  - bash upload.sh docker-deploy
